@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experience — Arnold Segine</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  .exp-hero { padding: 130px 56px 60px; }
+  .exp-hero h1 { font-family: var(--serif); font-size: clamp(3rem,5vw,5rem); font-weight: 400; margin-bottom: 16px; }
+  .exp-hero h1 em { color: var(--gold); }
+  .exp-body { padding: 0 56px 72px; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; max-width: 760px; }
+  .tl-item { display: flex; gap: 22px; padding-bottom: 44px; position: relative; }
+  .tl-item:not(:last-child)::after {
+    content: ''; position: absolute; left: 9px; top: 24px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .tl-dot { width: 20px; height: 20px; min-width: 20px; border: 2px solid var(--gold); border-radius: 50%; background: var(--bg); margin-top: 3px; }
+  .tl-body { flex: 1; }
+  .tl-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .tl-title { font-size: 1rem; color: var(--white); font-weight: 600; }
+  .tl-dates { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+  .tl-company { font-size: 0.82rem; color: var(--gold); margin-bottom: 12px; font-weight: 500; }
+  .tl-bullet { font-size: 0.86rem; color: var(--muted); line-height: 1.7; display: flex; gap: 10px; margin-bottom: 6px; }
+  .tl-bullet::before { content: '·'; color: var(--gold); font-size: 1.1rem; line-height: 1.4; min-width: 8px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; }
+  .edu-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 22px 24px; }
+  .edu-card h4 { font-size: 0.92rem; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+  .edu-card .edu-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+  .edu-card .edu-note { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+
+  .cert-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; max-width: 760px; }
+  .cert-badge { background: var(--bg2); border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px; font-size: 0.82rem; color: var(--white); transition: border-color 0.2s; }
+  .cert-badge:hover { border-color: var(--gold-dim); }
+
+  @media (max-width: 900px) {
+    .exp-hero { padding: 110px 20px 40px; }
+    .exp-body { padding: 0 20px 48px; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Arnold Segine</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <section class="exp-hero">
+    <div class="section-label fade-up">Career History</div>
+    <h1 class="fade-up-2">Where I've <em>Worked</em></h1>
+    <p class="section-desc fade-up-3">7+ years across healthcare, telecom, insurance, and HR growing into bigger product and leadership challenges at every step.</p>
+  </section>
+
+  <div class="exp-body">
+
+    <div class="section-label reveal">Work Timeline</div>
+    <br/>
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Chief Operating Officer</div>
+            <div class="tl-dates">Jul 2023 to Present</div>
+          </div>
+          <div class="tl-company">Canadian Fertility Consulting Ltd. · Woodbridge, ON</div>
+          <div class="tl-bullet">Oversaw overall operations, strategy, and performance of the company with a focus on delivering high quality fertility health services.</div>
+          <div class="tl-bullet">Collaborated with CEO and management to develop and execute strategic goals and initiatives.</div>
+          <div class="tl-bullet">Identified cost saving opportunities resulting in a 15% reduction in operational costs while maintaining service quality.</div>
+          <div class="tl-bullet">Built and maintained relationships with clients, fertility clinics, and stakeholders to enhance service delivery.</div>
+          <div class="tl-bullet">Managed a diverse team of professionals fostering a culture of collaboration and continuous improvement.</div>
+          <div class="tl-bullet">Conducted market analysis to identify emerging trends and inform development of new service offerings.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Project Manager</div>
+            <div class="tl-dates">Mar 2021 to Jul 2023</div>
+          </div>
+          <div class="tl-company">Charter Communications · Charlotte, NC</div>
+          <div class="tl-bullet">Led large scale cloud migration project moving the business from monolithic architecture to microservices on AWS.</div>
+          <div class="tl-bullet">Planned and executed on premise to AWS cloud migration creating efficient pathways for all applications.</div>
+          <div class="tl-bullet">Managed phased delivery with stakeholder reviews ensuring all teams stayed aligned to objectives and go live targets.</div>
+          <div class="tl-bullet">Allocated resources, scheduling, documentation, and budgeting across the full project lifecycle.</div>
+          <div class="tl-bullet">Used Jira, Confluence, and MS Project to manage and track project progress.</div>
+          <div class="tl-bullet">Removed obstacles and created contingency plans to mitigate risks across onshore and offshore teams.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Agile Scrum Master</div>
+            <div class="tl-dates">Sep 2020 to Mar 2022</div>
+          </div>
+          <div class="tl-company">Charter Communications · Charlotte, NC</div>
+          <div class="tl-bullet">Coordinated Agile ceremonies including daily stand ups, sprint planning, sprint reviews, and retrospectives for multiple teams.</div>
+          <div class="tl-bullet">Developed and tracked agile metrics to measure team and project performance.</div>
+          <div class="tl-bullet">Led and coordinated offshore and onshore teams in a SAFe Scaled environment.</div>
+          <div class="tl-bullet">Coached and mentored team members to improve understanding of Agile methodologies.</div>
+          <div class="tl-bullet">Managed issue tracking systems and coordinated release activities.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">Project Manager</div>
+            <div class="tl-dates">Aug 2019 to Aug 2020</div>
+          </div>
+          <div class="tl-company">Combined Insurance · Thornhill, ON</div>
+          <div class="tl-bullet">Planned and executed complex projects related to insurance product development, distribution, and customer experience improvement.</div>
+          <div class="tl-bullet">Managed project resources including people, technology, and equipment.</div>
+          <div class="tl-bullet">Identified and mitigated project risks ensuring projects stayed on schedule and within budget.</div>
+          <div class="tl-bullet">Ensured compliance with legal and regulatory requirements working closely with the compliance team.</div>
+          <div class="tl-bullet">Communicated project status updates, risks, and issues to stakeholders throughout delivery.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div class="tl-title">HR &amp; Office Manager</div>
+            <div class="tl-dates">Mar 2017 to May 2019</div>
+          </div>
+          <div class="tl-company">Kale Recruitment · Bucharest, Romania</div>
+          <div class="tl-bullet">Developed and implemented HR strategies, policies, and procedures aligned with company objectives and legal requirements.</div>
+          <div class="tl-bullet">Oversaw full cycle recruitment and onboarding processes including job postings, screening, interviewing, and orientation.</div>
+          <div class="tl-bullet">Conducted employee performance evaluations and provided coaching to enhance individual and team performance.</div>
+          <div class="tl-bullet">Managed employee relations including conflict resolution, disciplinary actions, and grievances.</div>
+          <div class="tl-bullet">Oversaw office operations including facility management, vendor relationships, and supplies procurement.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="gold-rule" style="max-width:760px;"/>
+
+    <div class="section-label reveal" style="margin-top:48px;">Education</div>
+    <br/>
+    <div class="two-col reveal">
+      <div class="edu-card">
+        <h4>Master of Business Administration</h4>
+        <div class="edu-sub">University of Bucharest, Romania</div>
+        <div class="edu-note">Completed 1 year of graduate coursework in Strategic Management</div>
+      </div>
+      <div class="edu-card">
+        <h4>B.Eng, Marine Engineering &amp; Navigation</h4>
+        <div class="edu-sub">Constanta Maritime University, Romania</div>
+      </div>
+    </div>
+
+    <div class="section-label reveal" style="margin-top:48px;">Certifications</div>
+    <div class="cert-list reveal">
+      <div class="cert-badge">AI Product Management</div>
+      <div class="cert-badge">Certified Scrum Master</div>
+      <div class="cert-badge">Project Management</div>
+      <div class="cert-badge">Business Analyst Immersive</div>
+      <div class="cert-badge">Cisco IT Essentials</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div>© 2026 Arnold Segine</div>
+    <div><a href="contact.html">Get in Touch</a> &nbsp;·&nbsp; Remote Only | Edmonton, AB</div>
+  </footer>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Enterprise Cloud Migration to AWS — Arnold Segine</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  .proj-hero { padding: 130px 56px 60px; background: linear-gradient(135deg, #060D1F, #0F2040, #071020); position: relative; overflow: hidden; }
+  .proj-hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%); }
+  .proj-hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); text-decoration: none; margin-bottom: 28px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .proj-hero h1 { font-family: var(--serif); font-size: clamp(2.2rem,4vw,3.6rem); font-weight: 400; line-height: 1.05; margin-bottom: 20px; color: var(--white); }
+  .proj-hero h1 em { color: var(--gold); }
+
+  .case-body { padding: 60px 56px; }
+  .impact-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 56px; }
+  .impact-card { background: var(--bg2); padding: 28px 20px; text-align: center; }
+  .impact-card strong { display: block; font-family: var(--serif); font-size: 2rem; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+  .impact-card span { font-size: 0.75rem; color: var(--muted); }
+
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .case-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 14px; }
+  .case-block h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+  .case-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+  .tools-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .tool-tag { background: var(--bg3); border: 1px solid var(--border); padding: 5px 14px; border-radius: 5px; font-size: 0.78rem; color: var(--white); }
+
+  .proj-nav { display: flex; justify-content: space-between; align-items: center; padding: 32px 56px; border-top: 1px solid var(--border); }
+  .proj-nav a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .proj-nav a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .proj-hero { padding: 110px 20px 40px; }
+    .case-body { padding: 40px 20px; }
+    .case-grid { grid-template-columns: 1fr; gap: 32px; }
+    .impact-strip { grid-template-columns: repeat(2,1fr); }
+    .proj-nav { padding: 24px 20px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Arnold Segine</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="page-wrap">
+  <div class="proj-hero">
+    <div class="proj-hero-content fade-up">
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <div class="section-label">Case Study</div>
+      <h1>Enterprise Cloud<br/><em>Migration to AWS</em></h1>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="tag tag-gold">Cloud Infrastructure</span><span class="tag tag-gold">Digital Transformation</span><span class="tag tag-gold">Project Management</span></div>
+    </div>
+  </div>
+  <div class="case-body">
+    <div class="impact-strip reveal"><div class="impact-card"><strong>3x</strong><span>Scalability</span></div><div class="impact-card"><strong>4</strong><span>Delivery Phases</span></div><div class="impact-card"><strong>On time</strong><span>Go Live</span></div><div class="impact-card"><strong>98%</strong><span>Uptime Post Launch</span></div></div>
+    <div class="case-grid reveal">
+      <div class="case-block">
+        <div class="case-label">The Problem</div>
+        <h3>What needed solving</h3>
+        <p>The organization was operating on a legacy monolithic application that could not scale. Tight coupling between services made it impossible to independently scale components or deploy updates without risking full system downtime.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-label">Users</div>
+        <h3>Who it was built for</h3>
+        <p>Engineering teams, DevOps engineers, business stakeholders, and executive leadership who needed reliable and scalable infrastructure.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-label">The Solution</div>
+        <h3>How we solved it</h3>
+        <p>Led a phased enterprise migration from monolithic architecture to microservices on AWS. Defined a 4 phase delivery roadmap, established go live criteria, and coordinated onshore and offshore teams using Jira, Confluence, and MS Project throughout the full lifecycle.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-label">My Role</div>
+        <h3>What I owned</h3>
+        <p>Project Manager responsible for full lifecycle ownership including scoping, scheduling, budgeting, risk mitigation, stakeholder communication, and retrospective reviews.</p>
+        <div class="case-label" style="margin-top:20px;">Tools &amp; Technologies</div>
+        <div class="tools-row"><span class="tool-tag">AWS</span><span class="tool-tag">Jira</span><span class="tool-tag">Confluence</span><span class="tool-tag">MS Project</span><span class="tool-tag">Microservices</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="proj-nav">
+    <a href="projects.html">← All Projects</a>
+    <a href="contact.html">Discuss this project →</a>
+  </div>
+  <footer>
+    <div>© 2026 Arnold Segine</div>
+    <div><a href="contact.html">Get in Touch</a> &nbsp;·&nbsp; Remote Only | Edmonton, AB</div>
+  </footer>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

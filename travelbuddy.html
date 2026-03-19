@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TravelBuddy AI — Arnold Segine</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  .tb-hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 56px 80px;
+    background: radial-gradient(ellipse at 50% 40%, #0A1840 0%, #060C1A 40%, #020508 100%);
+    position: relative; overflow: hidden;
+  }
+  .tb-hero::before {
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 65%);
+    animation: pulse 4s ease-in-out infinite; pointer-events: none;
+  }
+  @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:0.7} }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  .tb-hero-content { position: relative; z-index: 1; max-width: 780px; }
+  .tb-plane { font-size: 4.5rem; display: block; margin-bottom: 24px; animation: float 3s ease-in-out infinite; }
+  .tb-hero h1 { font-family: var(--serif); font-size: clamp(3.5rem,7vw,6rem); font-weight: 400; line-height: 1.0; color: var(--white); margin-bottom: 16px; }
+  .tb-hero h1 em { color: var(--gold); }
+  .tb-tagline { font-size: 1.1rem; color: var(--muted); font-style: italic; letter-spacing: 0.06em; margin-bottom: 24px; }
+  .tb-hero-desc { font-size: 1.05rem; color: rgba(242,238,232,0.75); line-height: 1.8; max-width: 580px; margin: 0 auto 32px; }
+  .tb-hero-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px; }
+  .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; animation: bounce 2s ease-in-out infinite; }
+  .scroll-arrow { width: 1px; height: 32px; background: linear-gradient(to bottom, var(--gold), transparent); }
+
+  .tb-section { padding: 80px 56px; }
+  .tb-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .tb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1000px; }
+  .tb-grid.start { align-items: start; }
+
+  .tb-section h2 { font-family: var(--serif); font-size: clamp(2rem,3.5vw,2.8rem); font-weight: 400; margin-bottom: 20px; line-height: 1.1; }
+  .tb-section h2 em { color: var(--gold); }
+  .tb-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
+
+  .query-stack { display: flex; flex-direction: column; gap: 10px; }
+  .query-chip { background: rgba(201,162,39,0.06); border: 1px solid rgba(201,162,39,0.2); border-radius: 8px; padding: 14px 18px; font-size: 0.9rem; color: var(--white); display: flex; align-items: center; gap: 12px; transition: background 0.2s, border-color 0.2s; }
+  .query-chip:hover { background: rgba(201,162,39,0.1); border-color: rgba(201,162,39,0.4); }
+  .q-badge { font-size: 0.65rem; padding: 2px 8px; background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.3); color: #ff8080; border-radius: 100px; white-space: nowrap; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .feature-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; font-size: 0.84rem; color: var(--muted); display: flex; align-items: center; gap: 10px; transition: border-color 0.2s; }
+  .feature-item:hover { border-color: var(--gold-dim); color: var(--white); }
+  .feature-item::before { content: '✦'; color: var(--gold); font-size: 0.6rem; min-width: 10px; }
+
+  .flow-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 40px; border-radius: 12px; overflow: hidden; }
+  .flow-step { background: var(--bg3); padding: 32px 22px; position: relative; transition: background 0.2s; }
+  .flow-step:hover { background: #1E2230; }
+  .flow-num { font-family: var(--serif); font-size: 3rem; color: rgba(201,162,39,0.2); line-height: 1; margin-bottom: 16px; font-weight: 600; }
+  .flow-step h4 { font-size: 0.9rem; color: var(--white); font-weight: 500; margin-bottom: 8px; }
+  .flow-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+  .tech-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 32px; max-width: 860px; }
+  .tech-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 24px 16px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .tech-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+  .tech-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .tech-card h4 { font-size: 0.8rem; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+  .tech-card p { font-size: 0.7rem; color: var(--muted); }
+
+  .role-steps { display: flex; flex-direction: column; gap: 12px; }
+  .role-step { display: flex; gap: 14px; align-items: flex-start; background: var(--bg3); border-radius: 8px; padding: 16px 18px; border: 1px solid var(--border); }
+  .role-step-num { width: 28px; height: 28px; min-width: 28px; background: rgba(201,162,39,0.1); border: 1px solid var(--gold-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--gold); font-weight: 600; }
+  .role-step p { font-size: 0.86rem; color: var(--muted); margin: 3px 0 0; line-height: 1.6; }
+
+  .tb-vision { padding: 100px 56px; text-align: center; background: radial-gradient(ellipse at 50% 50%, rgba(201,162,39,0.05) 0%, transparent 70%); }
+  .vision-quote { font-family: var(--serif); font-size: clamp(1.4rem,3vw,2.2rem); color: var(--white); font-style: italic; line-height: 1.6; max-width: 800px; margin: 0 auto 24px; font-weight: 400; }
+  .vision-quote em { color: var(--gold); }
+  .vision-sub { font-size: 0.88rem; color: var(--muted); }
+
+  @media (max-width: 900px) {
+    .tb-hero { padding: 110px 20px 80px; }
+    .tb-section { padding: 56px 20px; }
+    .tb-grid { grid-template-columns: 1fr; gap: 36px; }
+    .flow-steps { grid-template-columns: 1fr 1fr; }
+    .tech-grid { grid-template-columns: repeat(3, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .tb-vision { padding: 60px 20px; }
+  }
+  @media (max-width: 480px) {
+    .flow-steps { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Arnold Segine</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="tb-hero">
+    <div class="tb-hero-content">
+      <span class="tb-plane fade-up">✈</span>
+      <h1 class="fade-up-2">TravelBuddy <em>AI</em></h1>
+      <p class="tb-tagline fade-up-2">"Travel that understands you."</p>
+      <p class="tb-hero-desc fade-up-3">An identity aware travel discovery platform powered by LLM natural language search. Helping travelers find culturally relevant, faith aware, and identity specific services anywhere in the world.</p>
+      <div class="tb-hero-tags fade-up-3">
+        <span class="tag tag-gold">Personal Project</span>
+        <span class="tag tag-gold">LLM &amp; NLP</span>
+        <span class="tag tag-gold">Identity Aware AI</span>
+        <span class="tag tag-gold">2025</span>
+      </div>
+      <a href="projects.html" class="btn btn-outline fade-up-3">← Back to Projects</a>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="tb-section alt">
+    <div class="tb-grid reveal">
+      <div>
+        <div class="section-label">The Problem</div>
+        <h2>Generic results <em>fail everyone.</em></h2>
+        <p>Through independent user research, I identified a clear market gap. Platforms like Google Maps and Yelp return generic results with no understanding of identity specific travel needs including culture, faith, language, grooming, or diaspora services.</p>
+        <p>A Black traveler in Copenhagen should not have to scroll through 40 irrelevant barbers. A Muslim traveler in Florence deserves to find a hijabi friendly salon without guesswork.</p>
+      </div>
+      <div class="query-stack">
+        <div class="query-chip"><span>🔍</span><span style="flex:1">Find a Black barber in Copenhagen</span><span class="q-badge">No results</span></div>
+        <div class="query-chip"><span>🔍</span><span style="flex:1">English speaking Pentecostal church in Tokyo</span><span class="q-badge">No results</span></div>
+        <div class="query-chip"><span>🔍</span><span style="flex:1">Hijabi friendly salon in Florence</span><span class="q-badge">No results</span></div>
+        <div class="query-chip"><span>🔍</span><span style="flex:1">African grocery store in Lisbon</span><span class="q-badge">No results</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION -->
+  <div class="tb-section">
+    <div class="tb-grid start reveal">
+      <div>
+        <div class="section-label">The Solution</div>
+        <h2>AI that understands <em>context.</em></h2>
+        <p>TravelBuddy AI uses LLM powered natural language search to interpret traveler identity context and return relevant, culturally tagged recommendations.</p>
+        <p>The AI parses location, service type, identity needs, cultural context, and language preferences then surfaces the right businesses with an explanation for each recommendation.</p>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:14px;">MVP Features</div>
+        <div class="features-grid">
+          <div class="feature-item">Natural language search</div>
+          <div class="feature-item">AI query interpretation</div>
+          <div class="feature-item">Identity aware tagging</div>
+          <div class="feature-item">Personalized results</div>
+          <div class="feature-item">AI explanations</div>
+          <div class="feature-item">Mobile first interface</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER FLOW -->
+  <div class="tb-section alt">
+    <div class="section-label reveal">User Flow</div>
+    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;margin-top:12px;">Four steps to <em>feeling seen.</em></h2>
+    <div class="flow-steps reveal">
+      <div class="flow-step"><div class="flow-num">01</div><h4>Type your need</h4><p>User types a travel need in plain natural language with no filters or dropdowns needed.</p></div>
+      <div class="flow-step"><div class="flow-num">02</div><h4>AI interprets</h4><p>LLM parses location, identity, cultural context, faith, and language from the query.</p></div>
+      <div class="flow-step"><div class="flow-num">03</div><h4>System searches</h4><p>Searches identity tagged business dataset to find the most relevant matches.</p></div>
+      <div class="flow-step"><div class="flow-num">04</div><h4>Personalized results</h4><p>User receives ranked recommendations with AI explanations for each result.</p></div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="tb-section">
+    <div class="section-label reveal">Technology Stack</div>
+    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:400;margin-top:12px;">Built for <em>scale.</em></h2>
+    <div class="tech-grid reveal">
+      <div class="tech-card"><div class="tech-icon">⚛️</div><h4>React</h4><p>Frontend interface</p></div>
+      <div class="tech-card"><div class="tech-icon">🐍</div><h4>Python</h4><p>FastAPI backend</p></div>
+      <div class="tech-card"><div class="tech-icon">🤖</div><h4>LLM Layer</h4><p>Query interpretation</p></div>
+      <div class="tech-card"><div class="tech-icon">🗃️</div><h4>Tagged Dataset</h4><p>Identity tagged businesses</p></div>
+      <div class="tech-card"><div class="tech-icon">🚀</div><h4>Replit</h4><p>MVP prototype</p></div>
+    </div>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="tb-section alt">
+    <div class="tb-grid start reveal">
+      <div>
+        <div class="section-label">My Role</div>
+        <h2>Full product <em>ownership.</em></h2>
+        <p>Personal project. I owned every stage from identifying the problem to building the prototype independently without a team.</p>
+        <p>This project demonstrates what I do as a product manager: find a real problem, understand the users, define the solution, and drive it to delivery.</p>
+      </div>
+      <div class="role-steps">
+        <div class="role-step"><div class="role-step-num">1</div><p>Conducted independent user research to identify the market gap</p></div>
+        <div class="role-step"><div class="role-step-num">2</div><p>Defined product vision and wrote the problem statement</p></div>
+        <div class="role-step"><div class="role-step-num">3</div><p>Developed user personas and mapped the user journey</p></div>
+        <div class="role-step"><div class="role-step-num">4</div><p>Prioritized features and defined MVP scope</p></div>
+        <div class="role-step"><div class="role-step-num">5</div><p>Designed user flow and defined AI product requirements</p></div>
+        <div class="role-step"><div class="role-step-num">6</div><p>Built working prototype using AI assisted development tools</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISION -->
+  <div class="tb-vision reveal">
+    <div class="section-label" style="justify-content:center;">Vision</div>
+    <p class="vision-quote" style="margin-top:20px;">"TravelBuddy AI aims to become the world's first identity aware travel infrastructure, helping people feel <em>seen, safe,</em> and culturally connected anywhere in the world."</p>
+    <p class="vision-sub">In a world of increasing global mobility, identity should never be a barrier to belonging.</p>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:32px 56px;border-top:1px solid var(--border);">
+    <a href="projects.html" style="font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">← All Projects</a>
+    <a href="contact.html" style="font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">Discuss this project →</a>
+  </div>
+
+  <footer>
+    <div>© 2026 Arnold Segine</div>
+    <div><a href="contact.html">Get in Touch</a> &nbsp;·&nbsp; Remote Only | Edmonton, AB</div>
+  </footer>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>
